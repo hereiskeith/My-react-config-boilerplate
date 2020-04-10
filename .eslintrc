@@ -9,5 +9,9 @@
     "react": {
       "version": "detect"
     }
+  },
+  // Indent with 2 spaces
+  "rules": {
+    "indent": ["warn", 2]
   }
 }
