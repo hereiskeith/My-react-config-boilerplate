@@ -7,12 +7,14 @@ const merge = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
 
+const APP_DIR = path.resolve(__dirname, '../src'); // <===== new stuff added here
+
 module.exports = env => {
   const { PLATFORM, VERSION } = env;
 
   return (
     {
-      entry: "./src/index.js",
+      entry: ["@babel/polyfill", APP_DIR],
       devServer: {
         contentBase: "./build"
       },
@@ -20,7 +22,7 @@ module.exports = env => {
       module: {
         rules: [
           {
-            test: /\.(png|jpg|jpeg|gif)$/,
+            test: /\.(svg|png|jpg|jpeg|gif)$/,
             use: [
               {
                 loader: "file-loader",
